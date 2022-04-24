@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+  app1:
+    container_name: 1app
+    build: ./App1
+
+  app2:
+    container_name: 2app
+    build: ./App2
+
+  proxy:
+    container_name: proxy
+    ports:
+      - 80:80
+    depends_on:
+      - app1
+      - app2
+    build:
+      context: .
